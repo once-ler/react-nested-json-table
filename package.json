@@ -1,6 +1,6 @@
 {
   "name": "react-nested-json-table",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A simple React component that renders any deeply nested json into a collapsible table",
   "main": "dist/index.js",
   "directories": {
@@ -23,8 +23,10 @@
     "url": "https://github.com/once-ler/react-nested-json-table.git"
   },
   "keywords": [
-    "reactjs",
-    "FHIR"
+    "nested",
+    "json",
+    "table",
+    "React"
   ],
   "author": "Henry Tao <htaox@hotmail.com> (http://github.com/once-ler)",
   "license": "MIT",
