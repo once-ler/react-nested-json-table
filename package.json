@@ -12,10 +12,10 @@
     "clean": "rimraf build",
     "lint": "eslint src",
     "build-release": "babel src --out-dir dist && webpack --config webpack.prod.config.js",
-	"clean-release": "rimraf dist",
+	  "clean-release": "rimraf dist",
     "prerelease": "npm run lint && npm run test && npm run clean-release && npm run build-release",
     "release": "npm publish .",
-	"test": "mocha src --compilers js:babel-register --recursive",
+    "test": "mocha src --compilers js:babel-register --recursive",
     "test:watch": "npm run test -- --watch"
   },
   "repository": {
@@ -61,8 +61,5 @@
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0-0"
-  },
-  "dependencies": {
-    "react-inspector": "^1.0.0-beta.2"
   }
 }
