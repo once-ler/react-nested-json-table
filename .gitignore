@@ -1,0 +1,14 @@
+node_modules
+npm-debug.log
+.DS_Store
+jsconfig.json
+
+react-codemod
+dev
+journal
+lib
+journal
+gh-pages/
+
+static/images/logo.ico
+build/
