@@ -1,8 +1,8 @@
 {
   "name": "react-nested-json-table",
-  "version": "0.1.2",
+  "version": "0.1.0",
   "description": "A simple React component that renders any deeply nested json into a collapsible table",
-  "main": "dist/index.js",
+  "main": "src/index.js",
   "directories": {
     "example": "example"
   },
@@ -11,9 +11,13 @@
     "build": "npm run clean && npm run lint && webpack --colors",
     "clean": "rimraf build",
     "lint": "eslint src",
-    "build-release": "babel src --out-dir dist && webpack --config webpack.prod.config.js",
-	  "clean-release": "rimraf dist",
-    "prerelease": "npm run lint && npm run test && npm run clean-release && npm run build-release",
+    "build:commonjs": "babel src --out-dir lib --ignore __tests__,__mocks__",
+    "build:umd": "webpack --config webpack.prod.config.js",
+    "build:umd:min": "cross-env MINIFY=1 webpack --config webpack.prod.config.js",
+    "build-release": "npm run clean-release && npm run build:commonjs",
+    "clean-release": "rimraf dist",
+    "bundle": "npm run build-release && mkdir dist && npm run build:umd && npm run build:umd:min",
+    "prerelease": "npm run lint && npm run test && npm run bundle",
     "release": "npm publish .",
     "test": "mocha src --compilers js:babel-register --recursive",
     "test:watch": "npm run test -- --watch"
@@ -45,23 +49,24 @@
     "babel-register": "^6.6.0",
     "core-js": "^1.1.4",
     "css-loader": "^0.23.0",
-    "enzyme": "^2.2.0",
-    "eslint": "^1.7.1",
-    "eslint-plugin-react": "^2.3.0",
+    "cross-env": "^1.0.8",
+    "enzyme": "^2.3.0",
+    "eslint": "^2.11.1",
+    "eslint-plugin-react": "^5.1.1",
     "expect": "^1.14.0",
     "jasmine-core": "^2.3.4",
     "mocha": "^2.4.5",
     "react": "^15.0.2",
-    "react-addons-test-utils": "^15.0.2",
-    "react-dom": "^15.0.2",
+    "react-addons-test-utils": "^15.0.2",    
     "react-hot-loader": "^1.2.7",
-    "rimraf": "^2.4.4",
+    "rimraf": "^2.5.2",
     "style-loader": "^0.13.0",
-    "webpack": "^1.9.6",
-    "webpack-dev-server": "^1.8.2",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1",
     "webpack-hot-middleware": "^2.10.0"
   },
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0-0"
+    "react": "^0.14.7 || ^15.0.0",
+    "react-dom": "^0.14.7 || ^15.0.0"
   }
 }
