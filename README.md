@@ -2,7 +2,7 @@ react-nested-json-table
 =======================
 A simple React component that renders any deeply nested json into a collapsible table
 
-Turn this deeply nested json:
+#####Turn this deeply nested json:
 
 ```javascript
 [
@@ -20,3 +20,6 @@ Turn this deeply nested json:
   }
 ]
 ```
+
+#####Into this:
+![react-nested-json-table](https://github.com/once-ler/react-nested-json-table/blob/master/static/images/react-nested-json-table.gif)
