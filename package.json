@@ -7,10 +7,9 @@
     "example": "example"
   },
   "scripts": {
-    "dev": "npm run build:koa",
-	"build:koa": "npm run clean && npm run lint && babel-node bin/server",
-	"dev:express": "npm run build:express && node server.js",
-    "build:express": "npm run clean && npm run lint && webpack --colors",
+    "dev": "npm run build && babel-node bin/server",
+	  "dev:express": "npm run build && node server.js",
+    "build": "npm run clean && npm run lint && webpack --colors",
     "clean": "rimraf build",
     "lint": "eslint src",
     "build:commonjs": "babel src --out-dir lib --ignore __tests__,__mocks__",

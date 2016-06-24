@@ -32,7 +32,7 @@ export default class App extends Component {
     return (
       <div>        
         {this.state.data && (() =>
-          <NestedJsonTable children={this.state.data} />
+          <NestedJsonTable children={this.state.data6} />
         )()}
       </div>
     );
