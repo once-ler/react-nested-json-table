@@ -2,6 +2,11 @@ react-nested-json-table
 =======================
 A simple React component that renders any deeply nested json into a collapsible table
 
+#####Install
+```bash
+npm install react-nested-json-table
+```
+
 #####Turn this deeply nested json:
 
 ```javascript
