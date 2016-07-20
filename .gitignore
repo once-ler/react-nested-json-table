@@ -6,7 +6,7 @@ jsconfig.json
 react-codemod
 dev
 journal
-lib
+/lib
 journal
 gh-pages/
 
