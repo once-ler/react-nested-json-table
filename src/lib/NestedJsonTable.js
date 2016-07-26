@@ -47,7 +47,7 @@ export default class NestedJsonTable extends Table {
                 <JsonNode path={childKey} children={o} />            
               </td>);
           } else {
-            rows.push(<td key={n}>{obj.toString()}</td>);
+            rows.push(<td key={n}>{obj ? obj.toString() : ''}</td>);
           }
         }
       }

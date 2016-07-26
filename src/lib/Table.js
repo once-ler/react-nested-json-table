@@ -114,7 +114,7 @@ export default class Table extends Component {
               <JsonNode path={childKey} children={o} />            
             </td>);
           } else {
-            newChild.push(<td key={Math.random()}>{obj.toString()}</td>);
+            newChild.push(<td key={Math.random()}>{obj ? obj.toString() : ''}</td>);
           }
         }
         curRow.push(newChild);
