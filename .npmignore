@@ -1,6 +1,7 @@
 .eslintrc
 .gitignore
 .npmignore
+.jshintrc
 jsconfig.json
 
 react-codemod
@@ -10,6 +11,10 @@ gh-pages
 
 build/
 example
-server.js
 src/
+server/
+static/
+bin/
+server.js
 webpack.config.js
+index.template.html

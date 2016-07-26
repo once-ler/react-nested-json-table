@@ -1,8 +1,8 @@
 {
   "name": "react-nested-json-table",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "A simple React component that renders any deeply nested json into a collapsible table",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "directories": {
     "example": "example"
   },
@@ -15,7 +15,8 @@
     "build:commonjs": "babel src --out-dir lib --ignore __tests__,__mocks__",
     "build:umd": "webpack --config webpack.prod.config.js",
     "build:umd:min": "cross-env MINIFY=1 webpack --config webpack.prod.config.js",
-    "build-release": "npm run clean-release && npm run build:commonjs",
+    "copy:styles": "cp ./src/lib/styles.css ./lib/lib",
+    "build-release": "npm run clean-release && npm run build:commonjs && npm run copy:styles",
     "clean-release": "rimraf dist",
     "bundle": "npm run build-release && mkdir dist && npm run build:umd && npm run build:umd:min",
     "prerelease": "npm run lint && npm run test && npm run bundle",
