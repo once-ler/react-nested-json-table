@@ -65,7 +65,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _NestedJsonTable2 = _interopRequireDefault(_NestedJsonTable);
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { default: obj };
+	}
 	
 	exports.default = _NestedJsonTable2.default;
 
@@ -75,11 +77,21 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	var _createClass = function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	}();
 	
 	__webpack_require__(2);
 	
@@ -95,13 +107,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _Table3 = _interopRequireDefault(_Table2);
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { default: obj };
+	}
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
+	}
 	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	function _possibleConstructorReturn(self, call) {
+	  if (!self) {
+	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	}
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
 	
 	var NestedJsonTable = function (_Table) {
 	  _inherits(NestedJsonTable, _Table);
@@ -109,7 +135,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function NestedJsonTable(props) {
 	    _classCallCheck(this, NestedJsonTable);
 	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(NestedJsonTable).call(this, props));
+	    return _possibleConstructorReturn(this, (NestedJsonTable.__proto__ || Object.getPrototypeOf(NestedJsonTable)).call(this, props));
 	  }
 	
 	  _createClass(NestedJsonTable, [{
@@ -118,27 +144,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var _this2 = this;
 	
 	      var _props = this.props;
-	      var children = _props.children;
+	      var data = _props.data;
 	      var parentKey = _props.parentKey;
+	      var expandAll = _props.expandAll;
 	
-	
-	      children = this.ensureChildIsArray(children);
-	      this.ensureChildIsObject(children);
+	      data = this.ensureChildIsArray(data);
+	      this.ensureChildIsObject(data);
 	
 	      var header = [];
 	      var rows = [];
 	
-	      children.forEach(function (child, i) {
+	      data.forEach(function (child, i) {
 	        for (var key in child) {
 	          var n = Math.random();
 	          var obj = child[key];
 	          var childKey = parentKey + '/' + i + '/' + key;
 	
-	          header.push(_react2.default.createElement(
-	            'th',
-	            { key: Math.random() },
-	            key
-	          ));
+	          header.push(_react2.default.createElement('th', { key: Math.random() }, key));
 	
 	          var o = [];
 	          if (_this2.isObject(obj)) {
@@ -146,51 +168,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	          }
 	          if (_this2.isArray(obj) && obj.length > 0) {
 	            var modifiedArray = _this2.makeArrayForEach(obj);
-	            rows.push(_react2.default.createElement(
-	              'td',
-	              { key: n },
-	              _react2.default.createElement(_JsonNode2.default, { path: childKey, children: modifiedArray })
-	            ));
+	            rows.push(_react2.default.createElement('td', { key: n }, _react2.default.createElement(_JsonNode2.default, { path: childKey, data: modifiedArray, expandAll: expandAll })));
 	          } else {
 	            if (o.length > 0) {
-	              rows.push(_react2.default.createElement(
-	                'td',
-	                { key: n },
-	                _react2.default.createElement(_JsonNode2.default, { path: childKey, children: o })
-	              ));
+	              rows.push(_react2.default.createElement('td', { key: n }, _react2.default.createElement(_JsonNode2.default, { path: childKey, data: o, expandAll: expandAll })));
 	            } else {
-	              rows.push(_react2.default.createElement(
-	                'td',
-	                { key: n },
-	                obj.toString()
-	              ));
+	              rows.push(_react2.default.createElement('td', { key: n }, obj ? obj.toString() : ''));
 	            }
 	          }
 	        }
 	      });
 	
-	      return _react2.default.createElement(
-	        'table',
-	        null,
-	        _react2.default.createElement(
-	          'thead',
-	          null,
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            header
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'tbody',
-	          null,
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            rows
-	          )
-	        )
-	      );
+	      return _react2.default.createElement('div', { className: 'react-nested-json-table' }, _react2.default.createElement('table', null, _react2.default.createElement('thead', null, _react2.default.createElement('tr', null, header)), _react2.default.createElement('tbody', null, _react2.default.createElement('tr', null, rows))));
 	    }
 	  }]);
 	
@@ -198,7 +187,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_Table3.default);
 	
 	NestedJsonTable.propTypes = {
-	  children: _react.PropTypes.any.isRequired
+	  data: _react.PropTypes.any.isRequired,
+	  expandAll: _react.PropTypes.bool
 	};
 	exports.default = NestedJsonTable;
 
@@ -237,7 +227,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	
 	// module
-	exports.push([module.id, "body {\r\n  font-family: 'Roboto', sans-serif;\r\n}\r\n.divCollapsible--hide {\r\n  display: none;\r\n}\r\n.spanGlyph--expand {\r\n  color: #6e6e6e !important;\r\n  /* fontSize: 10px !important; */\r\n  marginRight: 3px !important;\r\n  whiteSpace: pre !important;\r\n  min-height: 12px !important;\r\n  max-height: 12px !important;\r\n  line-height: 12px !important;\r\n}\r\n.spanGlyph--expand:hover {\r\n  cursor: pointer;\r\n}\r\ntable td, table td * {\r\n    vertical-align: top;\r\n}\r\n\r\ntable {\r\n  border: 1px solid #e0e0e0;\r\n  border-collapse: collapse;\r\n  border-spacing: 0;\r\n  empty-cells: show;\r\n  margin-bottom: 1.5rem;\r\n  width: 100%; }\r\n  table caption {\r\n    color: #555;\r\n    font-size: 85%;\r\n    font-style: italic;\r\n    line-height: 3rem;\r\n    text-align: center; }\r\n  table thead {\r\n    background-color: #f5f5f5;\r\n    text-align: left; }\r\n  table tfoot {\r\n    background-color: #fbfbfb;\r\n    border-top: 1px solid #e0e0e0; }\r\n  table th,\r\n  table td {\r\n    border-right: 1px solid #e0e0e0;\r\n    line-height: 1.5rem;\r\n    overflow: visible;\r\n    padding: 0.375rem 1em; }\r\n    @media (min-width: 480px) {\r\n      table th,\r\n      table td {\r\n        line-height: 3rem; } }\r\n    table th:last-child,\r\n    table td:last-child {\r\n      border-right: none; }\r\n  table tr,\r\n  table td {\r\n    -webkit-transition: background-color 150ms;\r\n    transition: background-color 150ms; }\r\n  @media (min-width: 480px) {\r\n    table {\r\n      width: auto; }\r\n      table th,\r\n      table td {\r\n        padding: 0 2.5em; } }\r\n\r\n.nonresponsive {\r\n  width: auto; }\r\n  .nonresponsive th,\r\n  .nonresponsive td {\r\n    padding: 0 2.5em; }\r\n\r\n.nonresponsive th,\r\n.nonresponsive td {\r\n  line-height: 3rem; }\r\n\r\n.table--responsive {\r\n  overflow: auto;\r\n  width: 100%; }\r\n  .table--responsive::-webkit-scrollbar {\r\n    height: 14px;\r\n    width: 14px;\r\n    -webkit-appearance: none; }\r\n  .table--responsive::-webkit-scrollbar-thumb {\r\n    background-color: rgba(50, 50, 50, 0.2);\r\n    border: 3px solid white;\r\n    border-radius: 8px; }\r\n  .table--responsive table {\r\n    margin-bottom: 0; }\r\n\r\n.table--full {\r\n  width: 100%; }\r\n\r\n.table--border {\r\n  border: 1px solid #e0e0e0; }\r\n  .table--border thead,\r\n  .table--border td {\r\n    border-bottom: 1px solid #e0e0e0; }\r\n\r\n.table--borderOuter {\r\n  border: 1px solid #e0e0e0; }\r\n  .table--borderOuter th,\r\n  .table--borderOuter td {\r\n    border-right: none; }\r\n\r\n.table--borderHorizontal thead,\r\n.table--borderHorizontal td {\r\n  border-bottom: 1px solid #e0e0e0; }\r\n\r\n.table--borderHorizontal th,\r\n.table--borderHorizontal td {\r\n  border-right: none; }\r\n\r\n.table--flat {\r\n  border: none; }\r\n  .table--flat td {\r\n    border-bottom: none; }\r\n  .table--flat th,\r\n  .table--flat td {\r\n    border-right: none; }\r\n\r\n.table--fillEven tbody tr:nth-child(even) {\r\n  background-color: #f5f5f5; }\r\n\r\n.table--fillOdd tbody tr:nth-child(odd) {\r\n  background-color: #f5f5f5; }\r\n\r\n.table--hoverRow tbody tr:hover {\r\n  background-color: #f5f5f5; }\r\n\r\n.table--hoverCell tbody td:hover {\r\n  background-color: #f5f5f5; }\r\n\r\n.table--truncate {\r\n  table-layout: fixed; }\r\n  .table--truncate td {\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap; }\r\n", ""]);
+	exports.push([module.id, ".divCollapsible--hide {\r\n  display: none;\r\n}\r\n.spanGlyph--expand {\r\n  color: #6e6e6e !important;\r\n  font-size: 10px !important;\r\n  margin-left: -4px !important;\r\n  margin-right: 3px !important;\r\n  white-space: pre !important;\r\n  min-height: 10px !important;\r\n  max-height: 10px !important;\r\n  line-height: 10px !important;\r\n}\r\n.spanGlyph--expand:hover {\r\n  cursor: pointer;\r\n}\r\n.react-nested-json-table table td, table td * {\r\n  vertical-align: top;\r\n}\r\n\r\n.react-nested-json-table table {\r\n  font-size: 0.85rem;\r\n  border: 1px solid #e0e0e0;\r\n  border-collapse: collapse;\r\n  border-spacing: 0;\r\n  empty-cells: show;\r\n  /* margin-bottom: 1.5rem; */\r\n  width: 100%; }\r\n  table caption {\r\n    color: #555;\r\n    font-size: 85%;\r\n    font-style: italic;\r\n    line-height: 3rem;\r\n    text-align: center; }\r\n  table thead {\r\n    background-color: #f5f5f5;\r\n    text-align: left; }\r\n  table tfoot {\r\n    background-color: #fbfbfb;\r\n    border-top: 1px solid #e0e0e0; }\r\n  table th,\r\n  table td {\r\n    /*display: inline-flex;*/\r\n    white-space: pre;\r\n    border-right: 1px solid #e0e0e0;\r\n    line-height: 1rem;\r\n    overflow: visible;\r\n    padding: 0.175rem 0.5em; }\r\n    @media (min-width: 480px) {\r\n      table th,\r\n      table td {\r\n        line-height: 1rem; } }\r\n    table th:last-child,\r\n    table td:last-child {\r\n      border-right: none; }\r\n  table tr,\r\n  table td {\r\n    -webkit-transition: background-color 150ms;\r\n    transition: background-color 150ms; }\r\n  @media (min-width: 480px) {\r\n    table {\r\n      width: auto; }\r\n      table th,\r\n      table td {\r\n        /* padding: 0 2.5em; */\r\n      } }\r\n\r\n.nonresponsive {\r\n  width: auto; }\r\n  .nonresponsive th,\r\n  .nonresponsive td {\r\n    /* padding: 0 2.5em; */\r\n  }\r\n\r\n.nonresponsive th,\r\n.nonresponsive td {\r\n  line-height: 2rem; }\r\n\r\n.table--responsive {\r\n  overflow: auto;\r\n  width: 100%; }\r\n  .table--responsive::-webkit-scrollbar {\r\n    height: 14px;\r\n    width: 14px;\r\n    -webkit-appearance: none; }\r\n  .table--responsive::-webkit-scrollbar-thumb {\r\n    background-color: rgba(50, 50, 50, 0.2);\r\n    border: 3px solid white;\r\n    border-radius: 8px; }\r\n  .table--responsive table {\r\n    margin-bottom: 0; }\r\n\r\n.table--full {\r\n  width: 100%; }\r\n\r\n.table--border {\r\n  border: 1px solid #e0e0e0; }\r\n  .table--border thead,\r\n  .table--border td {\r\n    border-bottom: 1px solid #e0e0e0; }\r\n\r\n.table--borderOuter {\r\n  border: 1px solid #e0e0e0; }\r\n  .table--borderOuter th,\r\n  .table--borderOuter td {\r\n    border-right: none; }\r\n\r\n.table--borderHorizontal thead,\r\n.table--borderHorizontal td {\r\n  border-bottom: 1px solid #e0e0e0; }\r\n\r\n.table--borderHorizontal th,\r\n.table--borderHorizontal td {\r\n  border-right: none; }\r\n\r\n.table--flat {\r\n  border: none; }\r\n  .table--flat td {\r\n    border-bottom: none; }\r\n  .table--flat th,\r\n  .table--flat td {\r\n    border-right: none; }\r\n\r\n.table--fillEven tbody tr:nth-child(even) {\r\n  background-color: #f5f5f5; }\r\n\r\n.table--fillOdd tbody tr:nth-child(odd) {\r\n  background-color: #f5f5f5; }\r\n\r\n.table--hoverRow tbody tr:hover {\r\n  background-color: #f5f5f5; }\r\n\r\n.table--hoverCell tbody td:hover {\r\n  background-color: #f5f5f5; }\r\n\r\n.table--truncate {\r\n  table-layout: fixed; }\r\n  .table--truncate td {\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap; }\r\n", ""]);
 	
 	// exports
 
@@ -562,11 +552,21 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	var _createClass = function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	}();
 	
 	var _react = __webpack_require__(6);
 	
@@ -580,15 +580,35 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _Table2 = _interopRequireDefault(_Table);
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { default: obj };
+	}
 	
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	function _defineProperty(obj, key, value) {
+	  if (key in obj) {
+	    Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
+	  } else {
+	    obj[key] = value;
+	  }return obj;
+	}
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
+	}
 	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	function _possibleConstructorReturn(self, call) {
+	  if (!self) {
+	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	}
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
 	
 	/* http://unicode-table.com/en/sets/arrows-symbols/ */
 	var glyphArrowUp = '▲';
@@ -601,12 +621,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function JsonNode(props) {
 	    _classCallCheck(this, JsonNode);
 	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(JsonNode).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (JsonNode.__proto__ || Object.getPrototypeOf(JsonNode)).call(this, props));
 	
 	    var path = props.path;
+	    var expandAll = props.expandAll;
 	
-	    var newState = _defineProperty({}, path, { display: { 'divCollapsible--hide': true }, spanGlyph: { 'spanGlyph--expand': true }, expander: glyphArrowRight });
-	    _this.state = Object.assign(newState, { expanded: false });
+	    var newState = _defineProperty({}, path, { display: { 'divCollapsible--hide': expandAll ? false : true }, spanGlyph: { 'spanGlyph--expand': true }, expander: expandAll ? glyphArrowDown : glyphArrowRight });
+	    _this.state = Object.assign(newState, { expanded: expandAll || false });
 	    return _this;
 	  }
 	
@@ -624,25 +645,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'render',
 	    value: function render() {
 	      var _props = this.props;
-	      var children = _props.children;
+	      var data = _props.data;
 	      var path = _props.path;
+	      var expandAll = _props.expandAll;
 	
-	
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'span',
-	          { className: (0, _classnames2.default)(this.state[path].spanGlyph), onClick: this.handleClick.bind(this, path) },
-	          this.state[path].expander
-	        ),
-	        ' ',
-	        _react2.default.createElement(
-	          'div',
-	          { className: (0, _classnames2.default)(this.state[path].display) },
-	          _react2.default.createElement(_Table2.default, { children: children, parentKey: path })
-	        )
-	      );
+	      return _react2.default.createElement('div', null, _react2.default.createElement('span', { className: (0, _classnames2.default)(this.state[path].spanGlyph), onClick: this.handleClick.bind(this, path) }, this.state[path].expander), ' ', _react2.default.createElement('div', { className: (0, _classnames2.default)(this.state[path].display) }, _react2.default.createElement(_Table2.default, { data: data, parentKey: path, expandAll: expandAll })));
 	    }
 	  }]);
 	
@@ -650,8 +657,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_react.Component);
 	
 	JsonNode.propTypes = {
-	  children: _react.PropTypes.any,
-	  path: _react.PropTypes.string
+	  data: _react.PropTypes.any,
+	  path: _react.PropTypes.string,
+	  expandAll: _react.PropTypes.bool
 	};
 	exports.default = JsonNode;
 
@@ -660,7 +668,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	  Copyright (c) 2015 Jed Watson.
+	  Copyright (c) 2016 Jed Watson.
 	  Licensed under the MIT License (MIT), see
 	  http://jedwatson.github.io/classnames
 	*/
@@ -672,7 +680,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		var hasOwn = {}.hasOwnProperty;
 	
 		function classNames () {
-			var classes = '';
+			var classes = [];
 	
 			for (var i = 0; i < arguments.length; i++) {
 				var arg = arguments[i];
@@ -681,19 +689,19 @@ return /******/ (function(modules) { // webpackBootstrap
 				var argType = typeof arg;
 	
 				if (argType === 'string' || argType === 'number') {
-					classes += ' ' + arg;
+					classes.push(arg);
 				} else if (Array.isArray(arg)) {
-					classes += ' ' + classNames.apply(null, arg);
+					classes.push(classNames.apply(null, arg));
 				} else if (argType === 'object') {
 					for (var key in arg) {
 						if (hasOwn.call(arg, key) && arg[key]) {
-							classes += ' ' + key;
+							classes.push(key);
 						}
 					}
 				}
 			}
 	
-			return classes.substr(1);
+			return classes.join(' ');
 		}
 	
 		if (typeof module !== 'undefined' && module.exports) {
@@ -715,13 +723,27 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 	
+	var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+	var _typeof = typeof Symbol === "function" && _typeof2(Symbol.iterator) === "symbol" ? function (obj) {
+	  return typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+	} : function (obj) {
+	  return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof2(obj);
+	};
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	var _createClass = function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	}();
 	
 	var _react = __webpack_require__(6);
 	
@@ -731,27 +753,46 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _JsonNode2 = _interopRequireDefault(_JsonNode);
 	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { default: obj };
+	}
 	
-	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	function _defineProperty(obj, key, value) {
+	  if (key in obj) {
+	    Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
+	  } else {
+	    obj[key] = value;
+	  }return obj;
+	}
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
+	}
 	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	function _possibleConstructorReturn(self, call) {
+	  if (!self) {
+	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	  }return call && ((typeof call === "undefined" ? "undefined" : _typeof2(call)) === "object" || typeof call === "function") ? call : self;
+	}
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof2(superClass)));
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
 	
 	/*
 	 *  @description Child node table creator
 	 */
-	
 	var Table = function (_Component) {
 	  _inherits(Table, _Component);
 	
 	  function Table(props) {
 	    _classCallCheck(this, Table);
 	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Table).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (Table.__proto__ || Object.getPrototypeOf(Table)).call(this, props));
 	
 	    _this.state = {};
 	    return _this;
@@ -760,7 +801,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  /**
 	    * @reference jQuery.makeArray
 	  **/
-	
 	
 	  _createClass(Table, [{
 	    key: 'makeArray',
@@ -798,13 +838,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  }, {
 	    key: 'ensureChildIsObject',
-	    value: function ensureChildIsObject(children) {
-	      for (var k in children) {
-	        var ty = _typeof(children[k]);
+	    value: function ensureChildIsObject(data) {
+	      for (var k in data) {
+	        var ty = _typeof(data[k]);
 	
 	        if (ty.search(/^string|number|boolean|function$/i) != -1) {
-	          var r = _defineProperty({}, children.length.toString() + ' items', children[k]);
-	          children[k] = r;
+	          var r = _defineProperty({}, data.length.toString() + ' items', data[k]);
+	          data[k] = r;
 	        }
 	      }
 	    }
@@ -813,10 +853,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  }, {
 	    key: 'makeArrayForEach',
-	    value: function makeArrayForEach(children) {
+	    value: function makeArrayForEach(data) {
 	      var _this2 = this;
 	
-	      return children.map(function (child) {
+	      return data.map(function (child) {
 	        if (_this2.isObject(child)) {
 	          return _this2.makeArray(child);
 	        }
@@ -824,15 +864,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 	    }
 	
-	    // make sure the passed in children property is an array
+	    // make sure the passed in data property is an array
 	
 	  }, {
 	    key: 'ensureChildIsArray',
-	    value: function ensureChildIsArray(children) {
-	      if (!this.isArray(children)) {
-	        return [children];
+	    value: function ensureChildIsArray(data) {
+	      if (!this.isArray(data)) {
+	        return [data];
 	      }
-	      return children;
+	      return data;
 	    }
 	  }, {
 	    key: 'render',
@@ -840,23 +880,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var _this3 = this;
 	
 	      var _props = this.props;
-	      var children = _props.children;
+	      var data = _props.data;
 	      var parentKey = _props.parentKey;
+	      var expandAll = _props.expandAll;
 	
-	
-	      this.ensureChildIsObject(children);
+	      this.ensureChildIsObject(data);
 	
 	      var header = [];
 	      var rows = [];
-	      Object.keys(children[0]).forEach(function (d) {
-	        return header.push(_react2.default.createElement(
-	          'th',
-	          { key: Math.random() },
-	          isNaN(d) ? d : 'collection'
-	        ));
+	      Object.keys(data[0]).forEach(function (d) {
+	        return header.push(_react2.default.createElement('th', { key: Math.random() }, isNaN(d) ? d : 'collection'));
 	      });
 	
-	      children.forEach(function (child, i) {
+	      data.forEach(function (child, i) {
 	        var curRow = [];
 	        for (var key in child) {
 	          var obj = child[key];
@@ -870,53 +906,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	          if (_this3.isArray(obj) && obj.length > 0) {
 	            // if a collection is a variant, make the object an array (ie. const node = [{ 1, "2", { "variant": 3.0 } }])
 	            var modifiedArray = _this3.makeArrayForEach(obj);
-	            newChild.push(_react2.default.createElement(
-	              'td',
-	              { key: Math.random() },
-	              _react2.default.createElement(_JsonNode2.default, { path: childKey, children: modifiedArray })
-	            ));
+	            newChild.push(_react2.default.createElement('td', { key: Math.random() }, _react2.default.createElement(_JsonNode2.default, { path: childKey, data: modifiedArray, expandAll: expandAll })));
 	          } else {
 	            if (o.length > 0) {
-	              newChild.push(_react2.default.createElement(
-	                'td',
-	                { key: Math.random() },
-	                _react2.default.createElement(_JsonNode2.default, { path: childKey, children: o })
-	              ));
+	              newChild.push(_react2.default.createElement('td', { key: Math.random() }, _react2.default.createElement(_JsonNode2.default, { path: childKey, data: o, expandAll: expandAll })));
 	            } else {
-	              newChild.push(_react2.default.createElement(
-	                'td',
-	                { key: Math.random() },
-	                obj.toString()
-	              ));
+	              newChild.push(_react2.default.createElement('td', { key: Math.random() }, obj ? obj.toString() : ''));
 	            }
 	          }
 	          curRow.push(newChild);
 	        }
-	        rows.push(_react2.default.createElement(
-	          'tr',
-	          { key: Math.random() },
-	          curRow
-	        ));
+	        rows.push(_react2.default.createElement('tr', { key: Math.random() }, curRow));
 	      });
 	
-	      return _react2.default.createElement(
-	        'table',
-	        null,
-	        _react2.default.createElement(
-	          'thead',
-	          null,
-	          _react2.default.createElement(
-	            'tr',
-	            null,
-	            header
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'tbody',
-	          null,
-	          rows
-	        )
-	      );
+	      return _react2.default.createElement('table', null, _react2.default.createElement('thead', null, _react2.default.createElement('tr', null, header)), _react2.default.createElement('tbody', null, rows));
 	    }
 	  }]);
 	
@@ -924,8 +927,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_react.Component);
 	
 	Table.propTypes = {
-	  children: _react.PropTypes.array.isRequired,
-	  parentKey: _react.PropTypes.string
+	  data: _react.PropTypes.array.isRequired,
+	  parentKey: _react.PropTypes.string,
+	  expandAll: _react.PropTypes.bool
 	};
 	Table.defaultProps = {
 	  parentKey: 'root'
