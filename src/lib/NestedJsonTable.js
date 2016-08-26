@@ -55,9 +55,11 @@ export default class NestedJsonTable extends Table {
     });
 
     return (
+      <div className="react-nested-json-table">
       <table><thead><tr>{header}</tr></thead>
         <tbody><tr>{rows}</tr></tbody>
       </table>
+      </div>
     );
   } 
 }
