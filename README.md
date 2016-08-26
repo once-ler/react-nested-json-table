@@ -28,3 +28,10 @@ npm install react-nested-json-table
 
 #####Into this:
 ![react-nested-json-table](https://github.com/once-ler/react-nested-json-table/blob/master/static/images/react-nested-json-table.gif)
+
+#####Since version 0.2.x
+Set __expandAll={true}__ to expand all nodes on initial render
+![expand-all](https://github.com/once-ler/react-nested-json-table/blob/master/static/images/expand-all.png)
+
+
+
