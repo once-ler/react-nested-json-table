@@ -30,7 +30,8 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.js$/, loader: 'babel', include: [ path.join(__dirname, 'src'), path.join(__dirname, 'example') ] },
-      { test: /\.css$/, loader: 'style-loader!css-loader'}   
+      { test: /\.css$/, loader: 'style-loader!css-loader'},
+      { test: /\.template.html$/, loader: 'blueimp-tmpl-loader'} 
     ]
   }
 };

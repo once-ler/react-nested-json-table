@@ -9,20 +9,19 @@ const glyphArrowRight = '\u25B6';
 
 export default class JsonNode extends Component {
   static propTypes = {
-    data: PropTypes.any,
-    path: PropTypes.string,
-    expandAll: PropTypes.bool
+    children: PropTypes.any,
+    path: PropTypes.string
   }
 
   constructor(props) {
     super(props);
-    const {path, expandAll} = props;
-
-    const newState = { [path]: { display: {'divCollapsible--hide': expandAll ? false : true}, spanGlyph: {'spanGlyph--expand': true}, expander: expandAll ? glyphArrowDown : glyphArrowRight } };
-    this.state = Object.assign(newState, {expanded: expandAll || false});    
+    let {path} = props;
+    const newState = { [path]: { display: {'divCollapsible--hide': true}, spanGlyph: {'spanGlyph--expand': true}, expander: glyphArrowRight } };
+    this.state = Object.assign(newState, {expanded: false});    
   }
 
   handleClick(id) {
+    // if (this.state[id].display['divCollapsible--hide']) {
     if (!this.state.expanded) {
       this.setState({[id]: { display: {'divCollapsible--hide': false}, spanGlyph: {'spanGlyph--expand': true}, expander: glyphArrowDown }});
     } else {
@@ -32,13 +31,13 @@ export default class JsonNode extends Component {
   }
 
   render() {
-    const { data, path, expandAll } = this.props;
+    const { children, path } = this.props;
 
     return (
       <div>
       <span className={classNames(this.state[path].spanGlyph)} onClick={this.handleClick.bind(this, path)}>{this.state[path].expander}</span>{' '}
         <div className={classNames(this.state[path].display)} >
-          <Table data={data} parentKey={path} expandAll={expandAll} />
+          <Table children={children} parentKey={path} />
         </div>              
       </div>
     );

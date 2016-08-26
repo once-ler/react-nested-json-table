@@ -6,24 +6,21 @@ import Table from './Table';
 export default class NestedJsonTable extends Table {
   
   static propTypes = {
-    data: PropTypes.any.isRequired,
-    expandAll: PropTypes.bool
+    children: PropTypes.array.isRequired
   }
-  
+
   constructor(props) {
     super(props);
   }
 
   render() {
-    let { data, parentKey, expandAll } = this.props;
-    
-    data = this.ensureChildIsArray(data);
-    this.ensureChildIsObject(data);
-    
+    const { children, parentKey } = this.props;
+    this.ensureChildIsObject(children);
+
     let header = [];
     let rows = [];
 
-    data.forEach((child, i) => {
+    children.forEach((child, i) => {
       for (const key in child) {
         const n = Math.random();
         const obj = child[key];
@@ -39,16 +36,16 @@ export default class NestedJsonTable extends Table {
           const modifiedArray = this.makeArrayForEach(obj);
           rows.push(
             <td key={n}>
-              <JsonNode path={childKey} data={modifiedArray} expandAll={expandAll} />            
+              <JsonNode path={childKey} children={modifiedArray} />            
             </td>);
         } else {
           if (o.length > 0) {
             rows.push(
               <td key={n}>
-                <JsonNode path={childKey} data={o} expandAll={expandAll} />            
+                <JsonNode path={childKey} children={o} />            
               </td>);
           } else {
-            rows.push(<td key={n}>{obj ? obj.toString() : ''}</td>);
+            rows.push(<td key={n}>{obj.toString()}</td>);
           }
         }
       }

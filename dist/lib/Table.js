@@ -29,6 +29,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /*
  *  @description Child node table creator
  */
+
 var Table = function (_Component) {
   _inherits(Table, _Component);
 
@@ -143,6 +144,7 @@ var Table = function (_Component) {
       children.forEach(function (child, i) {
         var curRow = [];
         for (var key in child) {
+          var n = Math.random();
           var obj = child[key];
           var childKey = parentKey + '/' + i + '/' + key;
 

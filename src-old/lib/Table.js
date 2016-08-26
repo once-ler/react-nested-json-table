@@ -7,9 +7,8 @@ import JsonNode from './JsonNode';
 export default class Table extends Component {
 
   static propTypes = {
-    data: PropTypes.array.isRequired,
-    parentKey: PropTypes.string,
-    expandAll: PropTypes.bool
+    children: PropTypes.array.isRequired,
+    parentKey: PropTypes.string
   }
 
   static defaultProps = {
@@ -50,23 +49,25 @@ export default class Table extends Component {
     return Object.prototype.toString.call(obj) === '[object Array]';
   }
 
-  // create object if value is not object or array
-  ensureChildIsObject(data) {
-    for (const k in data) {
-      let ty = typeof data[k];
+  //create object if value is not object or array
+  ensureChildIsObject(children) {
+    for(const k in children){
+      let ty = typeof children[k];
       
       if (ty.search(/^string|number|boolean|function$/i) != -1) {
         const r = {
-          [`${data.length.toString()} items`]: data[k]
+          // [ty.toString()]: children[k]
+          [`${children.length.toString()} items`]: children[k]
+          // ["collection"]: children[k]
         };
-        data[k] = r;
+        children[k] = r;
       }
     }
   }
 
   // create array from object for each member in an array
-  makeArrayForEach(data) {
-    return data.map(child => {
+  makeArrayForEach(children) {
+    return children.map(child => {
       if (this.isObject(child)) {
         return this.makeArray(child);
       }
@@ -74,26 +75,19 @@ export default class Table extends Component {
     });
   }
  
-  // make sure the passed in data property is an array
-  ensureChildIsArray(data) {
-    if (!this.isArray(data)) {
-      return [data];
-    }
-    return data;
-  }
-
   render() {
-    const { data, parentKey, expandAll } = this.props;
+    const { children, parentKey } = this.props;
     
-    this.ensureChildIsObject(data);
+    this.ensureChildIsObject(children);
 
     let header = [];
     let rows = [];
-    Object.keys(data[0]).forEach(d => header.push(<th key={Math.random()}>{isNaN(d) ? d : 'collection'}</th>));
+    Object.keys(children[0]).forEach(d => header.push(<th key={Math.random()}>{isNaN(d) ? d : 'collection'}</th>));
     
-    data.forEach((child, i) => {
+    children.forEach((child, i) => {
       let curRow = [];        
       for (const key in child) {
+        const n = Math.random();
         const obj = child[key];
         const childKey = `${parentKey}/${i}/${key}`;
 
@@ -107,15 +101,15 @@ export default class Table extends Component {
           const modifiedArray = this.makeArrayForEach(obj);          
           newChild.push(
             <td key={Math.random()}>
-              <JsonNode path={childKey} data={modifiedArray} expandAll={expandAll} />          
+              <JsonNode path={childKey} children={modifiedArray} />          
             </td>);
         } else {
           if (o.length > 0) {
             newChild.push(<td key={Math.random()}>
-              <JsonNode path={childKey} data={o} expandAll={expandAll} />            
+              <JsonNode path={childKey} children={o} />            
             </td>);
           } else {
-            newChild.push(<td key={Math.random()}>{obj ? obj.toString() : ''}</td>);
+            newChild.push(<td key={Math.random()}>{obj.toString()}</td>);
           }
         }
         curRow.push(newChild);
